@@ -9,8 +9,8 @@ interface DexViewProps {
 }
 
 export function DexView({ notify }: DexViewProps) {
-  const [from, setFrom] = useState("USDa");
-  const [to, setTo] = useState("USDb");
+  const [from, setFrom] = useState("ICX");
+  const [to, setTo] = useState("USDa");
   const [amt, setAmt] = useState("250");
   const [busy, setBusy] = useState(false);
 

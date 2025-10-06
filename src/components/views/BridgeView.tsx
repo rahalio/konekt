@@ -17,9 +17,9 @@ interface BridgeViewProps {
 }
 
 export function BridgeView({ notify }: BridgeViewProps) {
-  const [fromChain, setFromChain] = useState<ChainId>("chain-a");
-  const [toChain, setToChain] = useState<ChainId>("chain-b");
-  const [asset, setAsset] = useState<string>("USDa");
+  const [fromChain, setFromChain] = useState<ChainId>("konekt");
+  const [toChain, setToChain] = useState<ChainId>("chain-a");
+  const [asset, setAsset] = useState<string>("ICX");
   const [amount, setAmount] = useState<string>("100");
   const [busy, setBusy] = useState(false);
 
