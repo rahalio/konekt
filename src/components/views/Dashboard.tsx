@@ -5,7 +5,6 @@ import {
   Globe2,
   ChevronRight,
   ShieldCheck,
-  TrendingUp,
   Zap,
   Shield,
 } from "lucide-react";
@@ -18,68 +17,86 @@ interface DashboardProps {
 
 export function Dashboard({ onNavigate }: DashboardProps) {
   return (
-    <div className="min-h-[600px] lg:h-full lg:max-h-[800px] grid gap-6 lg:grid-cols-3 lg:grid-rows-1">
-      {/* Overview Section with Enhanced Stats */}
-      <Section
-        title="Performance Overview"
-        icon={<TrendingUp className="h-4 w-4" />}
-        className="h-full"
-      >
-        <div className="grid gap-4 sm:grid-cols-2 h-full content-start">
-          <button
-            onClick={() => onNavigate?.("dex")}
-            className="block w-full text-left transition-transform hover:scale-105"
-          >
-            <Stat
-              label="24h Volume"
-              value="$8.7M"
-              icon={<ArrowRightLeft className="h-5 w-5" />}
-              trend={{ value: "+12.3%", direction: "up" }}
-              highlight={true}
-            />
-          </button>
-          <button
-            onClick={() => onNavigate?.("bridge")}
-            className="block w-full text-left transition-transform hover:scale-105"
-          >
-            <Stat
-              label="Messages Relayed"
-              value="12,904"
-              icon={<Network className="h-5 w-5" />}
-              trend={{ value: "+5.7%", direction: "up" }}
-            />
-          </button>
-          <button
-            onClick={() => onNavigate?.("registry")}
-            className="block w-full text-left transition-transform hover:scale-105"
-          >
-            <Stat
-              label="Registered DApps"
-              value="36"
-              icon={<Store className="h-5 w-5" />}
-              trend={{ value: "+2", direction: "up" }}
-            />
-          </button>
-          <button
-            onClick={() => onNavigate?.("governance")}
-            className="block w-full text-left transition-transform hover:scale-105"
-          >
-            <Stat
-              label="Active Communities"
-              value="7"
-              icon={<Globe2 className="h-5 w-5" />}
-              trend={{ value: "→", direction: "neutral" }}
-            />
-          </button>
-        </div>
-      </Section>
+    <div className="space-y-6">
+      {/* Top Stats Bar - Full Width */}
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <button
+          onClick={() => onNavigate?.("dex")}
+          className="block w-full text-left transition-transform hover:scale-105"
+        >
+          <Stat
+            label="24h Volume"
+            value="$8.7M"
+            icon={<ArrowRightLeft className="h-5 w-5" />}
+            trend={{ value: "+12.3%", direction: "up" }}
+            highlight={true}
+          />
+        </button>
+        <button
+          onClick={() => onNavigate?.("bridge")}
+          className="block w-full text-left transition-transform hover:scale-105"
+        >
+          <Stat
+            label="Messages Relayed"
+            value="12,904"
+            icon={<Network className="h-5 w-5" />}
+            trend={{ value: "+5.7%", direction: "up" }}
+          />
+        </button>
+        <button
+          onClick={() => onNavigate?.("registry")}
+          className="block w-full text-left transition-transform hover:scale-105"
+        >
+          <Stat
+            label="Registered DApps"
+            value="36"
+            icon={<Store className="h-5 w-5" />}
+            trend={{ value: "+2", direction: "up" }}
+          />
+        </button>
+        <button
+          onClick={() => onNavigate?.("governance")}
+          className="block w-full text-left transition-transform hover:scale-105"
+        >
+          <Stat
+            label="Active Communities"
+            value="7"
+            icon={<Globe2 className="h-5 w-5" />}
+            trend={{ value: "→", direction: "neutral" }}
+          />
+        </button>
+        <button
+          onClick={() => onNavigate?.("bridge")}
+          className="block w-full text-left transition-transform hover:scale-105"
+        >
+          <Stat
+            label="Total Value Locked"
+            value="$24.8M"
+            icon={<Shield className="h-5 w-5" />}
+            trend={{ value: "+18.4%", direction: "up" }}
+          />
+        </button>
+        <button
+          onClick={() => onNavigate?.("governance")}
+          className="block w-full text-left transition-transform hover:scale-105"
+        >
+          <Stat
+            label="Staked Tokens"
+            value="847K"
+            icon={<ShieldCheck className="h-5 w-5" />}
+            trend={{ value: "+3.2%", direction: "up" }}
+          />
+        </button>
+      </div>
 
-      {/* Quick Actions with Better Visual Hierarchy */}
-      <Section
-        title="Quick Actions"
-        icon={<Zap className="h-4 w-4" />}
-        className="h-full"
-      >
+      {/* Main Content Grid - Two Columns */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        {/* Quick Actions */}
+        <Section
+          title="Quick Actions"
+          icon={<Zap className="h-4 w-4" />}
+          className="h-full"
+        >
         <div className="flex flex-col gap-3 h-full justify-start">
           <button
             onClick={() => onNavigate?.("bridge")}
@@ -229,6 +246,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
           </div>
         </div>
       </Section>
+      </div>
     </div>
   );
 }
