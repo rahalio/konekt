@@ -13,7 +13,7 @@ import { Section, Stat } from "../ui";
 
 export function Dashboard() {
   return (
-    <div className="h-full grid gap-6 md:grid-cols-3 md:grid-rows-1">
+    <div className="h-full min-h-[600px] max-h-[800px] grid gap-6 md:grid-cols-3 md:grid-rows-1">
       {/* Overview Section with Enhanced Stats */}
       <Section
         title="Performance Overview"

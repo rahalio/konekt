@@ -49,7 +49,7 @@ export function BridgeView({ notify }: BridgeViewProps) {
   };
 
   return (
-    <div className="h-full grid gap-6 md:grid-cols-2 md:grid-rows-1">
+    <div className="h-full min-h-[600px] max-h-[800px] grid gap-6 md:grid-cols-2 md:grid-rows-1">
       <Section
         title="Bridge Transfer"
         icon={<ArrowLeftRight className="h-4 w-4" />}
