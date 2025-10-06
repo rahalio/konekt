@@ -1,8 +1,8 @@
-import React from "react";
+import { ReactNode } from "react";
 
 interface PillProps {
   selected?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   onClick?: () => void;
 }
 

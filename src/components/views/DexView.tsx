@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { SwapHorizontal, Database } from "lucide-react";
+import { useState } from "react";
+import { ArrowRightLeft, Database } from "lucide-react";
 import { ASSETS, CHAINS } from "../../constants";
-import { Section, Badge } from "../ui";
+import { Section } from "../ui";
 import { wait } from "../../utils";
 
 interface DexViewProps {
@@ -29,7 +29,7 @@ export function DexView({ notify }: DexViewProps) {
     <div className="grid gap-4 md:grid-cols-2">
       <Section
         title="Cross-chain Swap"
-        icon={<SwapHorizontal className="h-4 w-4" />}
+        icon={<ArrowRightLeft className="h-4 w-4" />}
       >
         <div className="grid gap-3 md:grid-cols-2">
           <div>

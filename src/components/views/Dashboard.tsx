@@ -1,7 +1,7 @@
-import React from "react";
+import { ReactNode } from "react";
 import {
   Activity,
-  SwapHorizontal,
+  ArrowRightLeft,
   Network,
   Store,
   Globe2,
@@ -13,13 +13,13 @@ import { Section, Stat } from "../ui";
 
 export function Dashboard() {
   return (
-    <div className="grid gap-4 md:grid-cols-3">
+    <div className="h-full grid gap-6 grid-cols-1 md:grid-cols-3 auto-rows-fr">
       <Section title="Overview" icon={<Activity className="h-4 w-4" />}>
-        <div className="grid gap-3 md:grid-cols-2">
+        <div className="grid gap-3 md:grid-cols-2 h-full">
           <Stat
             label="24h Volume"
             value="$8.7M"
-            icon={<SwapHorizontal className="h-5 w-5" />}
+            icon={<ArrowRightLeft className="h-5 w-5" />}
           />
           <Stat
             label="Messages Relayed"
@@ -42,7 +42,7 @@ export function Dashboard() {
         title="Quick Actions"
         icon={<ChevronRight className="h-4 w-4" />}
       >
-        <div className="grid gap-2">
+        <div className="grid gap-3 h-full content-start">
           <QuickAction
             title="Bridge assets"
             desc="Move value between chains"
@@ -51,7 +51,7 @@ export function Dashboard() {
           <QuickAction
             title="Swap on DEX"
             desc="Cross-chain AMM settlement"
-            icon={<SwapHorizontal className="h-4 w-4" />}
+            icon={<ArrowRightLeft className="h-4 w-4" />}
           />
           <QuickAction
             title="Vote on Governance"
@@ -64,7 +64,7 @@ export function Dashboard() {
         title="Protocol Health"
         icon={<ShieldCheck className="h-4 w-4" />}
       >
-        <div className="grid gap-3">
+        <div className="grid gap-4 h-full content-start">
           <div className="rounded-xl border bg-white/5 p-4 text-sm">
             Finality: ~2.1s • Uptime 99.98%
           </div>
@@ -76,6 +76,63 @@ export function Dashboard() {
           </div>
         </div>
       </Section>
+
+      {/* Second Row */}
+      <Section title="Network Status" icon={<Network className="h-4 w-4" />}>
+        <div className="grid gap-4 h-full content-start">
+          <Stat
+            label="Active Validators"
+            value="36"
+            icon={<ShieldCheck className="h-5 w-5" />}
+          />
+          <Stat
+            label="Network Uptime"
+            value="99.98%"
+            icon={<Activity className="h-5 w-5" />}
+          />
+        </div>
+      </Section>
+
+      <Section
+        title="Cross-chain Activity"
+        icon={<ArrowLeftRight className="h-4 w-4" />}
+      >
+        <div className="grid gap-3 h-full content-start">
+          <div className="rounded-xl border bg-white/5 p-4 text-sm">
+            <div className="font-semibold">Latest Bridge Transfer</div>
+            <div className="text-xs opacity-70 mt-1">
+              100 ICX → Chain A (2 min ago)
+            </div>
+          </div>
+          <div className="rounded-xl border bg-white/5 p-4 text-sm">
+            <div className="font-semibold">Recent Swap</div>
+            <div className="text-xs opacity-70 mt-1">
+              USDa → USDb (5 min ago)
+            </div>
+          </div>
+          <div className="rounded-xl border bg-white/5 p-4 text-sm">
+            <div className="font-semibold">New DApp Registered</div>
+            <div className="text-xs opacity-70 mt-1">
+              Yield Farm v2 (1 hour ago)
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Market Overview" icon={<Store className="h-4 w-4" />}>
+        <div className="grid gap-4 h-full content-start">
+          <Stat
+            label="ICX Price"
+            value="$0.42"
+            icon={<ArrowRightLeft className="h-5 w-5" />}
+          />
+          <Stat
+            label="Market Cap"
+            value="$420M"
+            icon={<Globe2 className="h-5 w-5" />}
+          />
+        </div>
+      </Section>
     </div>
   );
 }
@@ -83,7 +140,7 @@ export function Dashboard() {
 interface QuickActionProps {
   title: string;
   desc: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
 }
 
 function QuickAction({ title, desc, icon }: QuickActionProps) {

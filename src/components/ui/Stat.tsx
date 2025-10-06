@@ -1,9 +1,9 @@
-import React from "react";
+import { ReactNode } from "react";
 
 interface StatProps {
   label: string;
   value: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 }
 
 export function Stat({ label, value, icon }: StatProps) {

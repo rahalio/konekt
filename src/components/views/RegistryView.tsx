@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Store } from "lucide-react";
 import { DAPPS } from "../../constants";
 import { Section, Badge } from "../ui";

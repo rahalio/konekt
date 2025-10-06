@@ -1,6 +1,7 @@
 {
     "name": "konekt",
     "version": "1.0.0",
+    "type": "module",
     "description": "KONEKT - Cross-chain connectivity platform",
     "main": "src/index.ts",
     "scripts": {
