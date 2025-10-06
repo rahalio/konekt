@@ -34,9 +34,9 @@ export default function App() {
       />
 
       <main className="mx-auto w-full max-w-6xl px-6 py-6">
-        {tab === "dashboard" && <Dashboard />}
-        {tab === "bridge" && <BridgeView notify={push} />}
-        {tab === "dex" && <DexView notify={push} />}
+        {tab === "dashboard" && <Dashboard onNavigate={setTab} />}
+        {tab === "bridge" && <BridgeView notify={push} onNavigate={setTab} />}
+        {tab === "dex" && <DexView notify={push} onNavigate={setTab} />}
         {tab === "governance" && <GovernanceView notify={push} />}
         {tab === "registry" && <RegistryView />}
       </main>

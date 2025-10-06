@@ -8,17 +8,20 @@ import {
   Zap,
   CheckCircle2,
   TrendingUp,
+  ArrowLeft,
+  BarChart3,
 } from "lucide-react";
-import type { ChainId } from "../../types";
+import type { ChainId, TabType } from "../../types";
 import { CHAINS, ASSETS } from "../../constants";
 import { Section, Badge, ChainDot, Stat } from "../ui";
 import { wait } from "../../utils";
 
 interface BridgeViewProps {
   notify: (message: string, type?: "ok" | "err") => void;
+  onNavigate?: (tab: TabType) => void;
 }
 
-export function BridgeView({ notify }: BridgeViewProps) {
+export function BridgeView({ notify, onNavigate }: BridgeViewProps) {
   const [fromChain, setFromChain] = useState<ChainId>("konekt");
   const [toChain, setToChain] = useState<ChainId>("chain-a");
   const [asset, setAsset] = useState<string>("ICX");
@@ -49,7 +52,27 @@ export function BridgeView({ notify }: BridgeViewProps) {
   };
 
   return (
-    <div className="min-h-[600px] lg:h-full lg:max-h-[800px] grid gap-6 lg:grid-cols-2 lg:grid-rows-1">
+    <div className="space-y-6">
+      {/* Quick Navigation */}
+      <div className="flex items-center gap-4 pb-4 border-b border-white/10">
+        <button
+          onClick={() => onNavigate?.("dashboard")}
+          className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Dashboard
+        </button>
+        <span className="text-white/40">•</span>
+        <button
+          onClick={() => onNavigate?.("dex")}
+          className="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+        >
+          <BarChart3 className="h-4 w-4" />
+          Try DEX instead
+        </button>
+      </div>
+
+      <div className="min-h-[600px] lg:h-full lg:max-h-[800px] grid gap-6 lg:grid-cols-2 lg:grid-rows-1">
       <Section
         title="Bridge Transfer"
         icon={<ArrowLeftRight className="h-4 w-4" />}
@@ -280,6 +303,7 @@ export function BridgeView({ notify }: BridgeViewProps) {
           </div>
         </div>
       </Section>
+      </div>
     </div>
   );
 }

@@ -9,16 +9,20 @@ import {
   ArrowUpDown,
   Percent,
   DollarSign,
+  ArrowLeft,
+  Shield,
 } from "lucide-react";
 import { ASSETS, CHAINS } from "../../constants";
+import type { TabType } from "../../types";
 import { Section, Stat } from "../ui";
 import { wait } from "../../utils";
 
 interface DexViewProps {
   notify: (message: string, type?: "ok" | "err") => void;
+  onNavigate?: (tab: TabType) => void;
 }
 
-export function DexView({ notify }: DexViewProps) {
+export function DexView({ notify, onNavigate }: DexViewProps) {
   const [from, setFrom] = useState("ICX");
   const [to, setTo] = useState("USDa");
   const [amt, setAmt] = useState("250");
@@ -45,7 +49,27 @@ export function DexView({ notify }: DexViewProps) {
   const toAsset = ASSETS.find((a) => a.symbol === to);
 
   return (
-    <div className="min-h-[600px] grid gap-6 md:grid-cols-2">
+    <div className="space-y-6">
+      {/* Quick Navigation */}
+      <div className="flex items-center gap-4 pb-4 border-b border-white/10">
+        <button
+          onClick={() => onNavigate?.("dashboard")}
+          className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Dashboard
+        </button>
+        <span className="text-white/40">•</span>
+        <button
+          onClick={() => onNavigate?.("bridge")}
+          className="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+        >
+          <Shield className="h-4 w-4" />
+          Try Bridge instead
+        </button>
+      </div>
+
+      <div className="min-h-[600px] grid gap-6 md:grid-cols-2">
       <Section
         title="Cross-chain Swap"
         icon={<ArrowLeftRight className="h-4 w-4" />}
@@ -348,6 +372,7 @@ export function DexView({ notify }: DexViewProps) {
           </div>
         </div>
       </Section>
+      </div>
     </div>
   );
 }
