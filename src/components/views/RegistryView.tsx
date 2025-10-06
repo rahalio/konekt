@@ -78,7 +78,9 @@ export function RegistryView() {
             <Store className="h-6 w-6 text-purple-200" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-white mb-1">DApp Registry</h1>
+            <h1 className="text-2xl font-bold text-white mb-1">
+              DApp Registry
+            </h1>
             <p className="text-sm text-white/60">
               Discover and deploy decentralized applications
             </p>
@@ -214,7 +216,8 @@ export function RegistryView() {
             No DApps Found
           </h3>
           <p className="text-white/60 max-w-sm mx-auto">
-            Try adjusting your search or filter criteria to discover more applications
+            Try adjusting your search or filter criteria to discover more
+            applications
           </p>
         </div>
       )}
