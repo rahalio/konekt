@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   ArrowLeftRight,
-  SwapHorizontal,
   Settings,
   Store,
   Wallet,
@@ -25,7 +24,7 @@ export default function App() {
   const { toasts, push, remove } = useToasts();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <div className="flex items-center gap-3">
           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-400 text-gray-900">
@@ -50,7 +49,7 @@ export default function App() {
             Bridge
           </Pill>
           <Pill selected={tab === "dex"} onClick={() => setTab("dex")}>
-            <SwapHorizontal className="mr-1 h-3 w-3" />
+            <ArrowLeftRight className="mr-1 h-3 w-3" />
             DEX
           </Pill>
           <Pill
@@ -76,7 +75,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-6 pb-24">
+      <main className="flex-1 mx-auto max-w-6xl px-6 py-4">
         {tab === "dashboard" && <Dashboard />}
         {tab === "bridge" && <BridgeView notify={push} />}
         {tab === "dex" && <DexView notify={push} />}

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { SwapHorizontal, Database } from "lucide-react";
+import { useState } from "react";
+import { ArrowLeftRight, Database } from "lucide-react";
 import { ASSETS, CHAINS } from "../../constants";
-import { Section, Badge } from "../ui";
+import { Section } from "../ui";
 import { wait } from "../../utils";
 
 interface DexViewProps {
@@ -26,49 +26,52 @@ export function DexView({ notify }: DexViewProps) {
   };
 
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="h-full grid gap-4 md:grid-cols-2 md:grid-rows-1">
       <Section
         title="Cross-chain Swap"
-        icon={<SwapHorizontal className="h-4 w-4" />}
+        icon={<ArrowLeftRight className="h-4 w-4" />}
+        className="h-full"
       >
-        <div className="grid gap-3 md:grid-cols-2">
-          <div>
-            <div className="mb-1 text-xs opacity-70">From</div>
-            <select
-              className="w-full rounded-xl border bg-white/5 p-2"
-              value={from}
-              onChange={(e) => setFrom(e.target.value)}
-            >
-              {ASSETS.map((a) => (
-                <option key={a.symbol} value={a.symbol}>
-                  {a.symbol} ({CHAINS[a.chainId].name})
-                </option>
-              ))}
-            </select>
+        <div className="flex flex-col gap-4 h-full">
+          <div className="grid gap-3 md:grid-cols-2">
+            <div>
+              <div className="mb-1 text-xs opacity-70">From</div>
+              <select
+                className="w-full rounded-xl border bg-white/5 p-2"
+                value={from}
+                onChange={(e) => setFrom(e.target.value)}
+              >
+                {ASSETS.map((a) => (
+                  <option key={a.symbol} value={a.symbol}>
+                    {a.symbol} ({CHAINS[a.chainId].name})
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <div className="mb-1 text-xs opacity-70">To</div>
+              <select
+                className="w-full rounded-xl border bg-white/5 p-2"
+                value={to}
+                onChange={(e) => setTo(e.target.value)}
+              >
+                {ASSETS.map((a) => (
+                  <option key={a.symbol} value={a.symbol}>
+                    {a.symbol} ({CHAINS[a.chainId].name})
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <div className="mb-1 text-xs opacity-70">Amount</div>
+              <input
+                className="w-full rounded-xl border bg-white/5 p-2"
+                value={amt}
+                onChange={(e) => setAmt(e.target.value)}
+              />
+            </div>
           </div>
-          <div>
-            <div className="mb-1 text-xs opacity-70">To</div>
-            <select
-              className="w-full rounded-xl border bg-white/5 p-2"
-              value={to}
-              onChange={(e) => setTo(e.target.value)}
-            >
-              {ASSETS.map((a) => (
-                <option key={a.symbol} value={a.symbol}>
-                  {a.symbol} ({CHAINS[a.chainId].name})
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <div className="mb-1 text-xs opacity-70">Amount</div>
-            <input
-              className="w-full rounded-xl border bg-white/5 p-2"
-              value={amt}
-              onChange={(e) => setAmt(e.target.value)}
-            />
-          </div>
-          <div className="flex items-end">
+          <div className="mt-auto pt-4">
             <button
               disabled={busy}
               onClick={submit}
@@ -76,15 +79,19 @@ export function DexView({ notify }: DexViewProps) {
             >
               Swap
             </button>
+            <div className="mt-3 text-xs opacity-70 text-center">
+              Slippage protected • TWAP oracle • ICX used for gas
+            </div>
           </div>
-        </div>
-        <div className="mt-3 text-xs opacity-70">
-          Slippage protected • TWAP oracle • ICX used for gas
         </div>
       </Section>
 
-      <Section title="Pools & TVL" icon={<Database className="h-4 w-4" />}>
-        <div className="grid gap-3 md:grid-cols-2">
+      <Section
+        title="Pools & TVL"
+        icon={<Database className="h-4 w-4" />}
+        className="h-full"
+      >
+        <div className="grid gap-3 md:grid-cols-2 h-full content-start">
           {[
             { pair: "USDa/USDb", tvl: "$4.2M", apr: "9.8%" },
             { pair: "ICX/USDb", tvl: "$1.1M", apr: "5.1%" },

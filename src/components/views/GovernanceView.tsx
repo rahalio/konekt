@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Settings,
   ShieldCheck,
@@ -54,11 +54,18 @@ export function GovernanceView({ notify }: GovernanceViewProps) {
   };
 
   return (
-    <div className="grid gap-4 md:grid-cols-2">
-      <Section title="Active Proposals" icon={<Settings className="h-4 w-4" />}>
-        <div className="grid gap-3">
+    <div className="h-full grid gap-4 md:grid-cols-2 md:grid-rows-1">
+      <Section
+        title="Active Proposals"
+        icon={<Settings className="h-4 w-4" />}
+        className="h-full"
+      >
+        <div className="flex flex-col gap-3 h-full overflow-y-auto">
           {proposals.map((p) => (
-            <div key={p.id} className="rounded-xl border bg-white/5 p-4">
+            <div
+              key={p.id}
+              className="rounded-xl border bg-white/5 p-4 flex-shrink-0"
+            >
               <div className="flex items-center justify-between">
                 <div className="font-semibold">
                   {p.title}{" "}
@@ -101,28 +108,36 @@ export function GovernanceView({ notify }: GovernanceViewProps) {
       <Section
         title="Validator / Staking"
         icon={<ShieldCheck className="h-4 w-4" />}
+        className="h-full"
       >
-        <div className="grid gap-3 md:grid-cols-2">
-          <Stat
-            label="Active Validators"
-            value="36"
-            icon={<Network className="h-5 w-5" />}
-          />
-          <Stat
-            label="Staked ICX"
-            value="12.8M"
-            icon={<Wallet className="h-5 w-5" />}
-          />
-          <Stat
-            label="APR"
-            value="8.2%"
-            icon={<Activity className="h-5 w-5" />}
-          />
-          <Stat
-            label="Slash events"
-            value="0"
-            icon={<ShieldCheck className="h-5 w-5" />}
-          />
+        <div className="flex flex-col gap-4 h-full">
+          <div className="grid gap-3 md:grid-cols-2">
+            <Stat
+              label="Active Validators"
+              value="36"
+              icon={<Network className="h-5 w-5" />}
+            />
+            <Stat
+              label="Staked ICX"
+              value="12.8M"
+              icon={<Wallet className="h-5 w-5" />}
+            />
+            <Stat
+              label="APR"
+              value="8.2%"
+              icon={<Activity className="h-5 w-5" />}
+            />
+            <Stat
+              label="Slash events"
+              value="0"
+              icon={<ShieldCheck className="h-5 w-5" />}
+            />
+          </div>
+          <div className="mt-auto pt-4">
+            <button className="w-full rounded-xl bg-white px-4 py-2 text-sm font-semibold text-gray-900">
+              Stake ICX
+            </button>
+          </div>
         </div>
       </Section>
     </div>
