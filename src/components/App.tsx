@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Settings,
   Store,
@@ -95,8 +95,22 @@ export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { toasts, push, remove } = useToasts();
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
-    <div className="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white">
+    <div className={`bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white min-h-screen ${isMobileMenuOpen ? 'overflow-hidden' : ''}`}>
       {/* Professional Navigation Bar */}
       <nav className="border-b border-white/10 bg-slate-900/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="mx-auto max-w-7xl px-6">
@@ -179,13 +193,9 @@ export default function App() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-white/20 bg-white/5 hover:bg-white/10 transition-all duration-200"
+                className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-white/20 bg-white/5 hover:bg-white/10 transition-all duration-200 relative z-50"
               >
-                {isMobileMenuOpen ? (
-                  <X className="h-5 w-5 text-white" />
-                ) : (
-                  <Menu className="h-5 w-5 text-white" />
-                )}
+                <Menu className="h-5 w-5 text-white" />
               </button>
             </div>
           </div>
@@ -195,14 +205,14 @@ export default function App() {
       {/* Mobile Navigation Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="md:hidden fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-sm animate-in fade-in duration-200"
+          className="md:hidden fixed inset-0 z-[60] bg-slate-900/95 backdrop-blur-sm opacity-100 transition-opacity duration-200"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
               setIsMobileMenuOpen(false);
             }
           }}
         >
-          <div className="flex flex-col h-full animate-in slide-in-from-top duration-300">
+          <div className="flex flex-col h-full transform translate-y-0 transition-transform duration-300">
             {/* Mobile Header */}
             <div className="flex items-center justify-between p-6 border-b border-white/10">
               <div className="flex items-center gap-3">
@@ -312,7 +322,7 @@ export default function App() {
         </div>
       )}
 
-      <main className="mx-auto w-full max-w-6xl px-6 py-6">
+      <main className={`mx-auto w-full max-w-6xl px-6 py-6 ${isMobileMenuOpen ? 'md:block hidden' : ''}`}>
         {tab === "dashboard" && <Dashboard />}
         {tab === "bridge" && <BridgeView notify={push} />}
         {tab === "dex" && <DexView notify={push} />}
@@ -321,7 +331,7 @@ export default function App() {
       </main>
 
       {/* Toasts */}
-      <div className="pointer-events-none fixed bottom-4 right-4 z-50 flex w-[360px] flex-col gap-2">
+      <div className="pointer-events-none fixed bottom-4 right-4 z-40 flex w-[360px] flex-col gap-2">
         {toasts.map((t) => (
           <div
             key={t.id}
