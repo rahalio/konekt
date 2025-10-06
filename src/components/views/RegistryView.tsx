@@ -70,15 +70,15 @@ export function RegistryView() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header with Search and Filters */}
-      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-400/30">
-            <Store className="h-5 w-5 text-purple-200" />
+      <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between">
+        <div className="flex items-center gap-4">
+          <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-400/30">
+            <Store className="h-6 w-6 text-purple-200" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-white">DApp Registry</h1>
+            <h1 className="text-2xl font-bold text-white mb-1">DApp Registry</h1>
             <p className="text-sm text-white/60">
               Discover and deploy decentralized applications
             </p>
@@ -87,10 +87,10 @@ export function RegistryView() {
 
         {/* Search Bar */}
         <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/40" />
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/40" />
           <input
             placeholder="Search DApps..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/30 transition-all duration-200"
+            className="w-full pl-12 pr-4 py-3 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/30 transition-all duration-200"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -98,8 +98,8 @@ export function RegistryView() {
       </div>
 
       {/* Category Filters */}
-      <div className="flex items-center gap-3 overflow-x-auto pb-2">
-        <div className="flex items-center gap-2 text-sm text-white/60">
+      <div className="flex items-center gap-4 overflow-x-auto pb-2">
+        <div className="flex items-center gap-3 text-sm text-white/60 flex-shrink-0">
           <Filter className="h-4 w-4" />
           <span>Categories:</span>
         </div>
@@ -107,7 +107,7 @@ export function RegistryView() {
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200 ${
               selectedCategory === category
                 ? "bg-blue-500/30 text-blue-200 border border-blue-400/50"
                 : "bg-white/5 text-white/70 border border-white/20 hover:bg-white/10 hover:text-white/90"
@@ -121,7 +121,7 @@ export function RegistryView() {
       </div>
 
       {/* DApp Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {enhancedDApps.map((d) => {
           const IconComponent = d.icon;
           return (
@@ -130,13 +130,13 @@ export function RegistryView() {
               className="group flex flex-col h-full rounded-xl border border-white/20 bg-gradient-to-br from-white/10 to-white/5 p-6 backdrop-blur-sm hover:from-white/15 hover:to-white/10 hover:border-white/30 transition-all duration-300 transform hover:scale-[1.02]"
             >
               {/* Header */}
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between mb-5">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-400/30">
+                  <div className="p-2.5 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-400/30">
                     <IconComponent className="h-5 w-5 text-blue-200" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white flex items-center gap-2">
+                    <h3 className="font-semibold text-white flex items-center gap-2 mb-1">
                       {d.name}
                       {d.verified && (
                         <div className="flex items-center">
@@ -154,12 +154,12 @@ export function RegistryView() {
               </div>
 
               {/* Description */}
-              <p className="text-sm text-white/70 mb-4 leading-relaxed flex-grow">
+              <p className="text-sm text-white/70 mb-5 leading-relaxed flex-grow">
                 {d.description}
               </p>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-5">
                 {d.tags.map((tag) => (
                   <Badge
                     key={tag}
@@ -171,7 +171,7 @@ export function RegistryView() {
               </div>
 
               {/* Stats */}
-              <div className="flex items-center justify-between text-xs text-white/60 mb-4">
+              <div className="flex items-center justify-between text-xs text-white/60 mb-5">
                 <div className="flex items-center gap-1">
                   <Download className="h-3 w-3" />
                   <span>{d.downloads.toLocaleString()} installs</span>
@@ -185,17 +185,17 @@ export function RegistryView() {
               </div>
 
               {/* CID */}
-              <div className="text-xs text-white/40 mb-4 font-mono">
+              <div className="text-xs text-white/40 mb-6 font-mono">
                 CID: {d.cid}
               </div>
 
               {/* Actions - pushed to bottom */}
-              <div className="flex gap-2 mt-auto">
-                <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium text-sm hover:from-blue-400 hover:to-purple-400 transition-all duration-200 transform hover:scale-[1.02]">
+              <div className="flex gap-3 mt-auto">
+                <button className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium text-sm hover:from-blue-400 hover:to-purple-400 transition-all duration-200 transform hover:scale-[1.02]">
                   <Download className="h-4 w-4" />
                   Install
                 </button>
-                <button className="px-3 py-2.5 rounded-lg border border-white/30 bg-white/5 text-white hover:bg-white/10 hover:border-white/40 transition-all duration-200">
+                <button className="px-3 py-3 rounded-lg border border-white/30 bg-white/5 text-white hover:bg-white/10 hover:border-white/40 transition-all duration-200">
                   <ExternalLink className="h-4 w-4" />
                 </button>
               </div>
@@ -206,15 +206,15 @@ export function RegistryView() {
 
       {/* Empty State */}
       {enhancedDApps.length === 0 && (
-        <div className="text-center py-12">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/5 flex items-center justify-center">
-            <Search className="h-8 w-8 text-white/40" />
+        <div className="text-center py-16">
+          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-white/5 flex items-center justify-center">
+            <Search className="h-10 w-10 text-white/40" />
           </div>
-          <h3 className="text-lg font-semibold text-white mb-2">
+          <h3 className="text-xl font-semibold text-white mb-3">
             No DApps Found
           </h3>
-          <p className="text-white/60">
-            Try adjusting your search or filter criteria
+          <p className="text-white/60 max-w-sm mx-auto">
+            Try adjusting your search or filter criteria to discover more applications
           </p>
         </div>
       )}

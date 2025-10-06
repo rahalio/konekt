@@ -13,14 +13,14 @@ import { Section, Stat } from "../ui";
 
 export function Dashboard() {
   return (
-    <div className="h-full min-h-[600px] max-h-[800px] grid gap-6 md:grid-cols-3 md:grid-rows-1">
+    <div className="min-h-[600px] lg:h-full lg:max-h-[800px] grid gap-6 lg:grid-cols-3 lg:grid-rows-1">
       {/* Overview Section with Enhanced Stats */}
       <Section
         title="Performance Overview"
         icon={<TrendingUp className="h-4 w-4" />}
         className="h-full"
       >
-        <div className="grid gap-4 md:grid-cols-2 h-full content-start">
+        <div className="grid gap-4 sm:grid-cols-2 h-full content-start">
           <Stat
             label="24h Volume"
             value="$8.7M"
