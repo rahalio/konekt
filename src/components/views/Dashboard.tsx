@@ -26,7 +26,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
         className="h-full"
       >
         <div className="grid gap-4 sm:grid-cols-2 h-full content-start">
-          <button 
+          <button
             onClick={() => onNavigate?.("dex")}
             className="block w-full text-left transition-transform hover:scale-105"
           >
@@ -38,7 +38,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
               highlight={true}
             />
           </button>
-          <button 
+          <button
             onClick={() => onNavigate?.("bridge")}
             className="block w-full text-left transition-transform hover:scale-105"
           >
@@ -49,7 +49,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
               trend={{ value: "+5.7%", direction: "up" }}
             />
           </button>
-          <button 
+          <button
             onClick={() => onNavigate?.("registry")}
             className="block w-full text-left transition-transform hover:scale-105"
           >
@@ -60,7 +60,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
               trend={{ value: "+2", direction: "up" }}
             />
           </button>
-          <button 
+          <button
             onClick={() => onNavigate?.("governance")}
             className="block w-full text-left transition-transform hover:scale-105"
           >
@@ -81,7 +81,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
         className="h-full"
       >
         <div className="flex flex-col gap-3 h-full justify-start">
-          <button 
+          <button
             onClick={() => onNavigate?.("bridge")}
             className="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-r from-blue-600/10 to-blue-500/5 p-5 text-left transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:border-blue-400/30 flex-1 min-h-[70px]"
           >
@@ -102,7 +102,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
             <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-500 to-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
           </button>
 
-          <button 
+          <button
             onClick={() => onNavigate?.("dex")}
             className="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-r from-purple-600/10 to-purple-500/5 p-5 text-left transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:border-purple-400/30 flex-1 min-h-[70px]"
           >
@@ -121,7 +121,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
             <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-purple-500 to-purple-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
           </button>
 
-          <button 
+          <button
             onClick={() => onNavigate?.("governance")}
             className="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-r from-emerald-600/10 to-emerald-500/5 p-5 text-left transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:border-emerald-400/30 flex-1 min-h-[70px]"
           >
@@ -140,7 +140,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
             <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-emerald-500 to-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></div>
           </button>
 
-          <button 
+          <button
             onClick={() => onNavigate?.("registry")}
             className="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-r from-orange-600/10 to-orange-500/5 p-5 text-left transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:border-orange-400/30 flex-1 min-h-[70px]"
           >
@@ -152,7 +152,9 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                 <div className="font-semibold text-white mb-1">
                   Explore DApp Store
                 </div>
-                <div className="text-sm text-white/60">Discover applications</div>
+                <div className="text-sm text-white/60">
+                  Discover applications
+                </div>
               </div>
               <ChevronRight className="h-5 w-5 text-white/40 group-hover:text-white/70 transition-colors" />
             </div>
