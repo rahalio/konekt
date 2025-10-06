@@ -17,12 +17,14 @@ export function Section({
 }: SectionProps) {
   return (
     <div
-      className={`rounded-2xl border bg-white/5 p-5 shadow-sm ring-1 ring-black/5 flex flex-col ${className}`}
+      className={`group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 shadow-lg hover:shadow-xl transition-all duration-200 hover:border-white/20 hover:bg-white/10 flex flex-col ${className}`}
     >
-      <div className="mb-3 flex items-center justify-between flex-shrink-0">
-        <div className="flex items-center gap-2 text-sm font-semibold">
-          {icon}
-          <span className="tracking-wide">{title}</span>
+      <div className="mb-4 flex items-center justify-between flex-shrink-0">
+        <div className="flex items-center gap-3 text-sm font-semibold">
+          <div className="p-1.5 rounded-lg bg-white/10 group-hover:bg-white/20 transition-colors">
+            {icon}
+          </div>
+          <span className="tracking-wide text-white/90 group-hover:text-white transition-colors">{title}</span>
         </div>
         {actions}
       </div>
