@@ -1,0 +1,34 @@
+{
+    "name": "konekt",
+    "version": "1.0.0",
+    "description": "KONEKT - Cross-chain connectivity platform",
+    "main": "src/index.ts",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "lucide-react": "^0.284.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.31",
+        "@types/react-dom": "^18.2.14",
+        "@vitejs/plugin-react": "^4.1.0",
+        "typescript": "^5.2.2",
+        "vite": "^4.4.9",
+        "autoprefixer": "^10.4.16",
+        "postcss": "^8.4.31",
+        "tailwindcss": "^3.3.5"
+    },
+    "keywords": [
+        "blockchain",
+        "cross-chain",
+        "react",
+        "typescript"
+    ],
+    "author": "",
+    "license": "MIT"
+}
