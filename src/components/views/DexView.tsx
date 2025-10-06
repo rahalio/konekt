@@ -45,7 +45,7 @@ export function DexView({ notify }: DexViewProps) {
   const toAsset = ASSETS.find((a) => a.symbol === to);
 
   return (
-    <div className="min-h-[600px] max-h-[800px] grid gap-6 md:grid-cols-2">
+    <div className="min-h-[600px] grid gap-6 md:grid-cols-2">
       <Section
         title="Cross-chain Swap"
         icon={<ArrowLeftRight className="h-4 w-4" />}

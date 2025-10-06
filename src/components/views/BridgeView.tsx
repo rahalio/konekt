@@ -49,7 +49,7 @@ export function BridgeView({ notify }: BridgeViewProps) {
   };
 
   return (
-    <div className="h-full min-h-[600px] max-h-[800px] grid gap-6 md:grid-cols-2 md:grid-rows-1">
+    <div className="min-h-[600px] lg:h-full lg:max-h-[800px] grid gap-6 lg:grid-cols-2 lg:grid-rows-1">
       <Section
         title="Bridge Transfer"
         icon={<ArrowLeftRight className="h-4 w-4" />}
@@ -67,7 +67,7 @@ export function BridgeView({ notify }: BridgeViewProps) {
         <div className="flex flex-col gap-6 h-full">
           {/* Chain Selection */}
           <div className="space-y-4">
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <label className="text-xs font-medium text-white/80 uppercase tracking-wider">
                   From Chain
@@ -118,7 +118,7 @@ export function BridgeView({ notify }: BridgeViewProps) {
             </div>
 
             {/* Asset and Amount */}
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <label className="text-xs font-medium text-white/80 uppercase tracking-wider">
                   Asset
@@ -161,17 +161,17 @@ export function BridgeView({ notify }: BridgeViewProps) {
           {/* Transfer Action */}
           <div className="mt-auto space-y-4">
             {/* Route Visualization */}
-            <div className="flex items-center justify-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-              <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
+              <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 justify-center sm:justify-start">
                 <ChainDot id={fromChain} />
                 {CHAINS[fromChain].name}
               </Badge>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <div className="w-6 h-0.5 bg-gradient-to-r from-blue-400 to-emerald-400"></div>
                 <ArrowLeftRight className="h-4 w-4 text-emerald-400" />
                 <div className="w-6 h-0.5 bg-gradient-to-r from-emerald-400 to-blue-400"></div>
               </div>
-              <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+              <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 justify-center sm:justify-start">
                 <ChainDot id={toChain} />
                 {CHAINS[toChain].name}
               </Badge>
