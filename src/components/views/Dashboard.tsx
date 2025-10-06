@@ -62,8 +62,12 @@ export function Dashboard() {
                 <ArrowRightLeft className="h-5 w-5" />
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-white mb-1">Cross-Chain Bridge</div>
-                <div className="text-sm text-white/60">Transfer assets across chains</div>
+                <div className="font-semibold text-white mb-1">
+                  Cross-Chain Bridge
+                </div>
+                <div className="text-sm text-white/60">
+                  Transfer assets across chains
+                </div>
               </div>
               <ChevronRight className="h-5 w-5 text-white/40 group-hover:text-white/70 transition-colors" />
             </div>
@@ -77,7 +81,9 @@ export function Dashboard() {
               </div>
               <div className="flex-1">
                 <div className="font-semibold text-white mb-1">Swap on DEX</div>
-                <div className="text-sm text-white/60">Cross-chain AMM settlement</div>
+                <div className="text-sm text-white/60">
+                  Cross-chain AMM settlement
+                </div>
               </div>
               <ChevronRight className="h-5 w-5 text-white/40 group-hover:text-white/70 transition-colors" />
             </div>
@@ -90,7 +96,9 @@ export function Dashboard() {
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-white mb-1">Vote on Governance</div>
+                <div className="font-semibold text-white mb-1">
+                  Vote on Governance
+                </div>
                 <div className="text-sm text-white/60">Stake & participate</div>
               </div>
               <ChevronRight className="h-5 w-5 text-white/40 group-hover:text-white/70 transition-colors" />
@@ -111,13 +119,18 @@ export function Dashboard() {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                <span className="text-sm font-medium text-emerald-300">Network Status</span>
+                <span className="text-sm font-medium text-emerald-300">
+                  Network Status
+                </span>
               </div>
-              <span className="text-xs text-emerald-400 bg-emerald-500/20 px-2 py-1 rounded-full">HEALTHY</span>
+              <span className="text-xs text-emerald-400 bg-emerald-500/20 px-2 py-1 rounded-full">
+                HEALTHY
+              </span>
             </div>
             <div className="text-sm text-white/80">
-              Finality: <span className="font-semibold text-white">~2.1s</span> • 
-              Uptime: <span className="font-semibold text-emerald-300">99.98%</span>
+              Finality: <span className="font-semibold text-white">~2.1s</span>{" "}
+              • Uptime:{" "}
+              <span className="font-semibold text-emerald-300">99.98%</span>
             </div>
           </div>
 
@@ -125,12 +138,19 @@ export function Dashboard() {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                <span className="text-sm font-medium text-white/90">Security</span>
+                <span className="text-sm font-medium text-white/90">
+                  Security
+                </span>
               </div>
-              <span className="text-xs text-green-400 bg-green-500/20 px-2 py-1 rounded-full">SECURE</span>
+              <span className="text-xs text-green-400 bg-green-500/20 px-2 py-1 rounded-full">
+                SECURE
+              </span>
             </div>
             <div className="text-sm text-white/70">
-              Circuit breakers: <span className="font-semibold text-green-400">none triggered</span>
+              Circuit breakers:{" "}
+              <span className="font-semibold text-green-400">
+                none triggered
+              </span>
             </div>
           </div>
 
@@ -138,12 +158,18 @@ export function Dashboard() {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-blue-400"></div>
-                <span className="text-sm font-medium text-white/90">Capacity</span>
+                <span className="text-sm font-medium text-white/90">
+                  Capacity
+                </span>
               </div>
-              <span className="text-xs text-blue-400 bg-blue-500/20 px-2 py-1 rounded-full">NORMAL</span>
+              <span className="text-xs text-blue-400 bg-blue-500/20 px-2 py-1 rounded-full">
+                NORMAL
+              </span>
             </div>
             <div className="text-sm text-white/70">
-              Caps: <span className="font-semibold text-white">per-asset 1.5M</span> (24h)
+              Caps:{" "}
+              <span className="font-semibold text-white">per-asset 1.5M</span>{" "}
+              (24h)
             </div>
           </div>
         </div>

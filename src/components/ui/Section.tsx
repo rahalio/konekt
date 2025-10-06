@@ -24,7 +24,9 @@ export function Section({
           <div className="p-1.5 rounded-lg bg-white/10 group-hover:bg-white/20 transition-colors">
             {icon}
           </div>
-          <span className="tracking-wide text-white/90 group-hover:text-white transition-colors">{title}</span>
+          <span className="tracking-wide text-white/90 group-hover:text-white transition-colors">
+            {title}
+          </span>
         </div>
         {actions}
       </div>
