@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   ArrowRightLeft,
   Network,
@@ -9,84 +10,147 @@ import {
   Shield,
 } from "lucide-react";
 import type { TabType } from "../../types";
-import { Section, Stat } from "../ui";
+import { Section, StatWithOverlay } from "../ui";
 
 interface DashboardProps {
   onNavigate?: (tab: TabType) => void;
 }
 
 export function Dashboard({ onNavigate }: DashboardProps) {
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [activeCard, setActiveCard] = useState<string | null>(null);
+
+  const handleCardHover = (cardId: string, isHovered: boolean) => {
+    setHoveredCard(isHovered ? cardId : null);
+  };
+
+  const handleCardClick = (cardId: string) => {
+    setActiveCard(cardId);
+  };
   return (
     <div className="space-y-6">
       {/* Top Stats Bar - Full Width */}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        <button
-          onClick={() => onNavigate?.("dex")}
-          className="block w-full text-left transition-transform hover:scale-105"
-        >
-          <Stat
-            label="24h Volume"
-            value="$8.7M"
-            icon={<ArrowRightLeft className="h-5 w-5" />}
-            trend={{ value: "+12.3%", direction: "up" }}
-            highlight={true}
-          />
-        </button>
-        <button
-          onClick={() => onNavigate?.("bridge")}
-          className="block w-full text-left transition-transform hover:scale-105"
-        >
-          <Stat
-            label="Messages Relayed"
-            value="12,904"
-            icon={<Network className="h-5 w-5" />}
-            trend={{ value: "+5.7%", direction: "up" }}
-          />
-        </button>
-        <button
-          onClick={() => onNavigate?.("registry")}
-          className="block w-full text-left transition-transform hover:scale-105"
-        >
-          <Stat
-            label="Registered DApps"
-            value="36"
-            icon={<Store className="h-5 w-5" />}
-            trend={{ value: "+2", direction: "up" }}
-          />
-        </button>
-        <button
-          onClick={() => onNavigate?.("governance")}
-          className="block w-full text-left transition-transform hover:scale-105"
-        >
-          <Stat
-            label="Active Communities"
-            value="7"
-            icon={<Globe2 className="h-5 w-5" />}
-            trend={{ value: "→", direction: "neutral" }}
-          />
-        </button>
-        <button
-          onClick={() => onNavigate?.("bridge")}
-          className="block w-full text-left transition-transform hover:scale-105"
-        >
-          <Stat
-            label="Total Value Locked"
-            value="$24.8M"
-            icon={<Shield className="h-5 w-5" />}
-            trend={{ value: "+18.4%", direction: "up" }}
-          />
-        </button>
-        <button
-          onClick={() => onNavigate?.("governance")}
-          className="block w-full text-left transition-transform hover:scale-105"
-        >
-          <Stat
-            label="Staked Tokens"
-            value="847K"
-            icon={<ShieldCheck className="h-5 w-5" />}
-            trend={{ value: "+3.2%", direction: "up" }}
-          />
-        </button>
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 items-stretch">
+        <StatWithOverlay
+          label="24h Volume"
+          value="$8.7M"
+          icon={<ArrowRightLeft className="h-5 w-5" />}
+          trend={{ value: "+12.3%", direction: "up" }}
+          highlight={activeCard === "volume" || (activeCard === null && hoveredCard === null)}
+          isActive={activeCard === "volume"}
+          isHovered={hoveredCard !== null && hoveredCard !== "volume"}
+          onHover={(isHovered) => handleCardHover("volume", isHovered)}
+          onClick={() => handleCardClick("volume")}
+          overlayContent={{
+            title: "Trading Volume Details",
+            details: [
+              "7-day average: $6.2M",
+              "Peak 24h: $12.1M",
+              "Active pairs: 24",
+              "Largest trade: $847K USDC/ETH"
+            ]
+          }}
+        />
+        <StatWithOverlay
+          label="Messages Relayed"
+          value="12,904"
+          icon={<Network className="h-5 w-5" />}
+          trend={{ value: "+5.7%", direction: "up" }}
+          highlight={activeCard === "messages"}
+          isActive={activeCard === "messages"}
+          isHovered={hoveredCard !== null && hoveredCard !== "messages"}
+          onHover={(isHovered) => handleCardHover("messages", isHovered)}
+          onClick={() => handleCardClick("messages")}
+          overlayContent={{
+            title: "Cross-Chain Activity",
+            details: [
+              "Success rate: 99.8%",
+              "Avg processing: 2.3s",
+              "Active routes: 12",
+              "Failed messages: 26"
+            ]
+          }}
+        />
+        <StatWithOverlay
+          label="Registered DApps"
+          value="36"
+          icon={<Store className="h-5 w-5" />}
+          trend={{ value: "+2", direction: "up" }}
+          highlight={activeCard === "dapps"}
+          isActive={activeCard === "dapps"}
+          isHovered={hoveredCard !== null && hoveredCard !== "dapps"}
+          onHover={(isHovered) => handleCardHover("dapps", isHovered)}
+          onClick={() => handleCardClick("dapps")}
+          overlayContent={{
+            title: "DApp Registry Stats",
+            details: [
+              "Active this week: 28",
+              "New registrations: 2",
+              "Pending reviews: 3",
+              "Top category: DeFi (15)"
+            ]
+          }}
+        />
+        <StatWithOverlay
+          label="Active Communities"
+          value="7"
+          icon={<Globe2 className="h-5 w-5" />}
+          trend={{ value: "→", direction: "neutral" }}
+          highlight={activeCard === "communities"}
+          isActive={activeCard === "communities"}
+          isHovered={hoveredCard !== null && hoveredCard !== "communities"}
+          onHover={(isHovered) => handleCardHover("communities", isHovered)}
+          onClick={() => handleCardClick("communities")}
+          overlayContent={{
+            title: "Community Overview",
+            details: [
+              "Total members: 2,847",
+              "Active voters: 1,203",
+              "Open proposals: 4",
+              "Governance tokens: 5.2M"
+            ]
+          }}
+        />
+        <StatWithOverlay
+          label="Total Value Locked"
+          value="$24.8M"
+          icon={<Shield className="h-5 w-5" />}
+          trend={{ value: "+18.4%", direction: "up" }}
+          highlight={activeCard === "tvl"}
+          isActive={activeCard === "tvl"}
+          isHovered={hoveredCard !== null && hoveredCard !== "tvl"}
+          onHover={(isHovered) => handleCardHover("tvl", isHovered)}
+          onClick={() => handleCardClick("tvl")}
+          overlayContent={{
+            title: "TVL Breakdown",
+            details: [
+              "Bridge reserves: $18.2M",
+              "Staking pools: $4.1M",
+              "LP tokens: $2.5M",
+              "All-time high: $31.2M"
+            ]
+          }}
+        />
+        <StatWithOverlay
+          label="Staked Tokens"
+          value="847K"
+          icon={<ShieldCheck className="h-5 w-5" />}
+          trend={{ value: "+3.2%", direction: "up" }}
+          highlight={activeCard === "staked"}
+          isActive={activeCard === "staked"}
+          isHovered={hoveredCard !== null && hoveredCard !== "staked"}
+          onHover={(isHovered) => handleCardHover("staked", isHovered)}
+          onClick={() => handleCardClick("staked")}
+          overlayContent={{
+            title: "Staking Details",
+            details: [
+              "APY: 12.4%",
+              "Unique stakers: 1,847",
+              "Avg stake size: 459 tokens",
+              "Unstaking queue: 23K tokens"
+            ]
+          }}
+        />
       </div>
 
       {/* Main Content Grid - Two Columns */}
