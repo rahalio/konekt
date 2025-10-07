@@ -1,4 +1,3 @@
-import React from "react";
 import type { ChainId } from "../../types";
 import { CHAINS } from "../../constants";
 

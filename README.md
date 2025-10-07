@@ -1,5 +1,7 @@
 # KONEKT
 
+🚀 **Live Demo**: [https://konekt-gold.vercel.app/](https://konekt-gold.vercel.app/)
+
 A React-based cross-chain connectivity platform built with TypeScript and Tailwind CSS.
 
 ## 🏗️ Project Structure
@@ -111,6 +113,27 @@ Manages toast notifications with:
    ```bash
    npm run build
    ```
+
+## 🌐 Live Deployment
+
+**Public URL**: [https://konekt-gold.vercel.app/](https://konekt-gold.vercel.app/)
+
+The application is deployed on Vercel with:
+
+- ✅ **Automatic deployments** from the main branch
+- ✅ **Global CDN** for fast worldwide access
+- ✅ **HTTPS** enabled by default
+- ✅ **Preview deployments** for pull requests
+
+### Deployment Commands
+
+```bash
+# Deploy to Vercel
+npx vercel
+
+# Deploy to production
+npx vercel --prod
+```
 
 ## 🎨 Styling
 
